@@ -5,38 +5,16 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Account from './pages/Account'
 import Settings from './pages/Settings'
+import ScanHistory from './pages/ScanHistory'
 import './App.css'
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
-    // Check dark mode preference
-    const isDark = localStorage.getItem('darkMode') === 'true'
-    setDarkMode(isDark)
-    if (isDark) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-
-    // Check if user is logged in
     const loggedIn = localStorage.getItem('isLoggedIn') === 'true'
     setIsLoggedIn(loggedIn)
   }, [])
-
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode
-    setDarkMode(newDarkMode)
-    localStorage.setItem('darkMode', newDarkMode)
-    
-    if (newDarkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }
 
   const handleLogin = () => {
     setIsLoggedIn(true)
@@ -55,7 +33,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/account" element={<Account onLogout={handleLogout} />} />
-            <Route path="/settings" element={<Settings darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/scan-history" element={<ScanHistory />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Layout>
