@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard'
 import Account from './pages/Account'
 import Settings from './pages/Settings'
 import ScanHistory from './pages/ScanHistory'
+import Analytics from './pages/Analytics'
+import Reports from './pages/Reports'
 import './App.css'
 
 export default function App() {
@@ -35,6 +37,8 @@ export default function App() {
             <Route path="/account" element={<Account onLogout={handleLogout} />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/scan-history" element={<ScanHistory />} />
+            <Route path="/analytics" element={<Analytics />} />
+<Route path="/reports" element={<Reports />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Layout>
